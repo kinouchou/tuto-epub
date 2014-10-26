@@ -1,0 +1,46 @@
+.sms, .sms1 {
+  width: auto;
+  max-width: 80%;
+  height: auto;
+  position: relative;
+  -webkit-border-radius: 1.8em;
+     -moz-border-radius: 1.8em;
+          border-radius: 1.8em;
+  padding: 0.8em;
+  margin: 2em;
+}
+
+.sms:before, .sms1:before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  bottom: 1.7em;
+  width: 0;
+  height: 0;
+  border-top: 1em solid transparent;
+  border-bottom: 0.8em solid transparent;
+}
+
+.sms {
+  background-image: -webkit-linear-gradient(bottom, #f2ff00 0%, #ffff96 30%, #f2ff00 82%);
+  background-image:    -moz-linear-gradient(bottom, #f2ff00 0%, #ffff96 30%, #f2ff00 82%);
+  background-image:     -ms-linear-gradient(bottom, #f2ff00 0%, #ffff96 30%, #f2ff00 82%);
+  background-image:      -o-linear-gradient(bottom, #f2ff00 0%, #ffff96 30%, #f2ff00 82%);
+  background-image:      linear-gradient(to bottom, #f2ff00 0%, #ffff96 30%, #f2ff00 82%);
+}
+.sms1 {
+  background-image: -webkit-linear-gradient(bottom, #ffb300 0%, #ffea96 30%, #ffb300 82%);
+  background-image:    -moz-linear-gradient(bottom, #ffb300 0%, #ffea96 30%, #ffb300 82%);
+  background-image:     -ms-linear-gradient(bottom, #ffb300 0%, #ffea96 30%, #ffb300 82%);
+  background-image:      -o-linear-gradient(bottom, #ffb300 0%, #ffea96 30%, #ffb300 82%);
+  background-image:      linear-gradient(to bottom, #ffb300 0%, #ffea96 30%, #ffb300 82%);
+}
+
+.sms:before {
+  border-left: 1.5em solid #f2ff00;
+}
+
+.sms1:before {
+  border-right: 1.5em solid #ffb300;
+}
+

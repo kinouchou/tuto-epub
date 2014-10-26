@@ -1,0 +1,23 @@
+/* couleurs juste pour la relecture */
+abbr {
+  background-color: yellow;
+}
+q, blockquote {
+  color: grey;
+}
+:lang(en), i {
+  background-color: green;
+}
+em {
+  background-color: purple;
+}
+cite {
+  color: red;
+}
+.hashtag {
+  color: blue;
+}
+.warning {
+  color: red;
+}
+

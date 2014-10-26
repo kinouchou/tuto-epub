@@ -16,46 +16,50 @@
       </ul>
     </div>
     <p>Un EPUB est un ensemble de fichiers (la plupart en <abbr>HTML</abbr>) compressés et ayant une extension .epub. Il est plus simple de faire un dossier par EPUB, de mettre dans ce dossier les fichiers et dossiers obligatoires. S’il y a besoin de fichiers intéressants pour le projets mais n’entrant pas dans l’EPUB final il vaut mieux les mettre dans un dossier à la racine de l’EPUB et de bien faire attention lors de la compression du dossier final pour ne pas inclure ce dossier annexe.</p>
+
     <h2 id="ch2-01" epub:type="bodymatter subchapter">Les différents fichiers obligatoires à un EPUB</h2>
-    <h3>fichier minetype</h3>
-    <p>Il contient une seul ligne :
+
+    <h3>fichier mimetype</h3>
+    <p>Il contient une seule ligne :
     <code>application/epub+zip</code></p>
     <p>Il doit toujours être à la racine du dossier.</p>
+
     <h3>dossier META-INF</h3>
     <h4>container.xml</h4>
     <a href="http://www.idpf.org/epub/30/spec/epub30-ocf.html#sec-container-metainf-container.xml">spec</a>
-    <div class="code">
-    <code>&lt;?xml version="1.0"?&gt;<br />
-      &lt;container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"&gt;<br />
-        &lt;rootfiles&gt;<br />
-          &lt;rootfile full-path="OPS/content.opf" media-type="application/oebps-package+xml"/&gt;<br />
-        &lt;/rootfiles&gt;<br />
-      &lt;/container&gt;</code>
-  </div>
+<pre>&lt;?xml version="1.0"?&gt;
+&lt;container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"&gt;
+  &lt;rootfiles&gt;
+    &lt;rootfile full-path="OPS/content.opf" media-type="application/oebps-package+xml"/&gt;
+  &lt;/rootfiles&gt;
+&lt;/container&gt;</pre>
     <p>Bien faire attention en mettant le chemin complet de <code>content.opf</code></p>
+
     <h3>dossier OPS</h3>
     <h4>fichier content.opf</h4>
     <p><a href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-package-elem">Spécifications de l’<abbr>idpf</abbr></a></p>
     <h5>l’entête</h5>
-    <p><code>&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;</code><br />
-    <code>standalone="no"</code> signifie que le fichier n'est pas autonome, c'est pas nécessaire de le noter car c'est sa valeur par défaut.</p>
+    <pre>&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;</pre>
+    <p><code>standalone="no"</code> signifie que le fichier n'est pas autonome, c'est pas nécessaire de le noter car c'est sa valeur par défaut.</p>
     <h5>package</h5>
-    <p class="code"><code>&lt;package xmlns="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/"<br />
-      xmlns:dcterms="http://purl.org/dc/terms/" version="3.0" xml:lang="en"<br />
-      unique-identifier="pub-identifier"&gt;</code></p>
+    <pre>&lt;package xmlns="http://www.idpf.org/2007/opf"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    version="3.0" xml:lang="en"
+    unique-identifier="pub-identifier"&gt;</pre>
     <p>Attention c'est ici qu'on dit la version de l'epub, bien indiquer la langue aussi. Pour la partie sur l'<a href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-opf-metadata-identifiers-pid">unique-identifier</a> j'ai encore des soucis pour comprendre comment on le crée. Les <code>xmlns="…"</code> sont très importants, ils permettent de dire quel « dictionnaire » de termes on utilise. C’est utile pour indiquer les différentes sections de l’EPUB.</p>
     <h5>metadata</h5>
-    <p class="code"><code>&lt;metadata&gt;<br />
-      &lt;dc:identifier id="pub-identifier"&gt;urn:isbn:numéro_isbn&lt;/dc:identifier&gt;<br />
-      &lt;dc:title id="pub-title"&gt;titre&lt;/dc:title&gt;<br />
-      &lt;dc:language id="pub-language"&gt;langue&lt;/dc:language&gt;<br />
-      &lt;dc:date&gt;date&lt;/dc:date&gt;<br />
-      &lt;meta property="dcterms:modified"&gt;… &lt;/meta&gt;<br/>
-      &lt;dc:creator id="pub-creator12"&gt;auteur&lt;/dc:creator&gt;<br />
-      &lt;dc:contributor&gt;contributeur&lt;/dc:contributor&gt;<br />
-      &lt;dc:publisher&gt;éditeur&lt;/dc:publisher&gt;<br />
-      &lt;dc:rights&gt;la licence&lt;/dc:rights&gt;<br />
-      &lt;/metadata&gt;</code></p>
+<pre>&lt;metadata&gt;
+  &lt;dc:identifier id="pub-identifier"&gt;urn:isbn:numéro_isbn&lt;/dc:identifier&gt;
+  &lt;dc:title id="pub-title"&gt;titre&lt;/dc:title&gt;
+  &lt;dc:language id="pub-language"&gt;langue&lt;/dc:language&gt;
+  &lt;dc:date&gt;date&lt;/dc:date&gt;
+  &lt;meta property="dcterms:modified"&gt;… &lt;/meta&gt;
+  &lt;dc:creator id="pub-creator12"&gt;auteur&lt;/dc:creator&gt;
+  &lt;dc:contributor&gt;contributeur&lt;/dc:contributor&gt;
+  &lt;dc:publisher&gt;éditeur&lt;/dc:publisher&gt;
+  &lt;dc:rights&gt;la licence&lt;/dc:rights&gt;
+&lt;/metadata&gt;</pre>
     <p>Il peut y avoir moins de <code>metadata</code> ou plus, les specs sont assez claires (pour une fois). Pour le <code>modified</code> c’est la date et l’heure sous la forme <code>yyyy-mm-jjThh:mm:ssZ</code></p>
     <h4>fichier toc.ncx</h4>
     <h4>au moins un fichier .html ou xhtml</h4>
@@ -69,7 +73,7 @@
     <aside epub:type="footnotes">
     <ol class="references" epub:type="footnote">
       <li><a  epub:type="footnote" href="#ref_ch2-1" id="note_ch2-1">1.</a> Contenu de la note de bas de page. Pour indiquer la référence bien mettre une espace insécable avant les crochets entourant le numéro de la référence. Ça permet d'avoir une zone plus grande pour sélectionner le lien notamment sur liseuse où la sélection se fait avec un doigt. </li>
-    </ol> 
+    </ol>
     </aside>
   </body>
 </html>

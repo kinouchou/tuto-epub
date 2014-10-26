@@ -1,20 +1,15 @@
-/* This defines styles and classes used in the book */
-/* body { margin-left: 5%; margin-right: 5%; margin-top: 5%; margin-bottom: 5%; text-align: justify; font-size: medium;
-} */
+/* Aide à la relecture -- désactiver cette ligne avant publication de l’EPUB */
+@import url(relecture.css);
 
 /* mise en page générale */
 .titre, .title {
-  page-break-before: always ;
+  page-break-before: always;
 }
 
 /* pages de présentation */
 .licence {
   text-align: center;
   width: 100%;
-  /*
-   * position: absolute;
-   * top: 30em;
-   */
   margin: 0 0 0 -3em;
 }
 h1 .titre, .licence {
@@ -37,7 +32,7 @@ h1 .title {
   text-align: center;
 }
 .couv {
-  height: 100% ;
+  height: 100%;
 }
 .licence img {
   width: 25%;
@@ -72,9 +67,8 @@ div.titre {
   border-top: 1px solid;
 }
 .titre1 {
-  page-break-before: always ;
+  page-break-before: always;
   text-align: right;
-  /* margin-top: 10em; */
   padding: 1em 0;
   border-bottom: 1px solid;
   border-top: 1px solid;
@@ -86,17 +80,28 @@ div.titre {
   font-family: serif;
   font-variant: small-caps;
 }
+
+/* Captain Obvious to the rescue! (XXX utiliser des styles en ligne ?) */
 .inline {
   display: inline;
-  /*
-   * width: 100px;
-   * margin-right: 20px;
-   * vertical-align: top;
-   * text-align: right;
-   */
 }
-.inline+: inline: after {
+.inline + :inline:after { /* XXX wut? */
   line-break: strict;
+}
+.droite {
+  text-align: right;
+}
+.gras {
+  font-weight: bold;
+}
+.droit {
+  font-style: normal;
+}
+.italique {
+  font-style: italic;
+}
+.centre {
+  text-align: center;
 }
 
 /* contenu */
@@ -107,15 +112,8 @@ h4 {
   font-style: italic;
 }
 .lettrine:first-letter {
-      font-size: 2.2em;}
-/*.lettrine+p {
-  text-indent: 0;
-}
-.lettrine+p: first-letter {
   font-size: 2.2em;
-  /* float: left; 
 }
-*/
 p {
   text-indent: 2em;
 }
@@ -127,40 +125,28 @@ p {
   margin-left: 25%;
   padding: 1em 5em;
   text-align: right;
- font-size: 0.75em;
+  font-size: 0.75em;
 }
 .intro {
   font-style: italic;
   padding-left: 2.2em;
   padding-bottom: 1.5em;
 }
-.droite {
-  text-align: right;
-}
 .titre-para {
   display: inline;
   font-size: 1em;
   font-style: bold;
 }
-.titre-para+p {
+.titre-para + p {
   display: inline;
 }
-blockquote,.citation {
+blockquote, .citation {
   padding: 1em 2em;
-}
-.droit {
-  font-style: normal;
-}
-.italique {
-  font-style: italic;
-}
-.centre {
-  text-align: center;
 }
 .chiffre-romain {
   font-variant: small-caps;
 }
-.chiffre-romain sup{
+.chiffre-romain sup {
   font-variant: normal;
 }
 table {
@@ -176,7 +162,7 @@ td, th {
   width: 3em;
 }
 .entete-ligne, th {
-  background-color: #ddd;
+  background-color: #DDDDDD;
   padding: 0.5em;
 }
 .entete {
@@ -184,7 +170,7 @@ td, th {
   background-color: #fff;
 }
 
-.table2 th {
+.table2 th { /* XXX à supprimer ? */
   padding: 0.5em 0;
 }
 caption {
@@ -195,11 +181,6 @@ caption {
 .references {
   list-style-type: none;
 }
-/*
- * ul li::before {
- *   content: "– ";
- * }
- */
 br, p {
   margin-bottom: 1em;
 }
@@ -207,26 +188,22 @@ br, p {
 ol {
   list-style-type: decimal;
 }
-.liste-alpha {
+.liste-alpha, .abc { /* XXX classes redondantes ? */
   list-style-type: lower-alpha;
 }
-.code, code {
+pre, code, .code {
   background-color: #DDDDDD;
-  margin: 1em;
-  padding: 0 2em ;
-  float: top;
-  text-indent: -3em;
   font-family: monospace;
 }
-.gras {
-  font-weight: bold;
+pre {
+  padding-left: 2em;
 }
 .toc {
   list-style-type: none;
 }
 
-/* lexique */
-dl code {
+/* lexique, annexe, biblio */
+dl code { /* XXX spécifique à la classe "lexique" ? */
   font-family: serif;
   font-style: italic;
   background-color: #DDDDDD;
@@ -252,9 +229,6 @@ dd {
 }
 .lexique h3 {
   font-family: sans-serif;
-}
-.abc {
-  list-style-type: lower-alpha;
 }
 .biblio {
   text-indent: -1em;
@@ -284,10 +258,7 @@ aside ul, .aside ul {
 aside ul li, .aside ul li {
   padding-bottom: 1em;
 }
-q::before {
-  content: "";
-}
-q::after {
+q::before, q::after { /* XXX wut? */
   content: "";
 }
 .figure {
@@ -297,80 +268,5 @@ q::after {
   padding: 0 3em;
   float: top;
   text-indent: 0
-}
-.sms {
-  width: auto;
-  max-width: 80%;
-  height: auto;
-  /* background: #00CC00; */
-  position: relative;
-  -moz-border-radius: 1.8em;
-  -webkit-border-radius: 1.8em;
-  border-radius: 1.8em;
-  padding: 0.8em;
-  margin: 2em;
-  background-image: -webkit-linear-gradient(bottom, #F2FF00 0%, #FFFF96 30%, #F2FF00 82%);
-  background-image:    -moz-linear-gradient(bottom, #F2FF00 0%, #FFFF96 30%, #F2FF00 82%);
-  background-image:     -ms-linear-gradient(bottom, #F2FF00 0%, #FFFF96 30%, #F2FF00 82%);
-  background-image:      -o-linear-gradient(bottom, #F2FF00 0%, #FFFF96 30%, #F2FF00 82%);
-  background-image: linear-gradient(to bottom, #F2FF00 0%, #FFFF96 30%, #F2FF00 82%);
-}
-.sms:before { content: "";
-  position: absolute;
-  left: 100%;
-  bottom: 1.7em; width: 0;
-  height: 0;
-  border-top: 1em solid transparent;
-  border-left: 1.5em solid #F2FF00;
-  border-bottom: 0.8em solid transparent;
-}
-.sms1 {
-  width: auto;
-  max-width: 80%;
-  height: auto;
-  position: relative;
-  -moz-border-radius: 1.8em;
-  -webkit-border-radius: 1.8em;
-  border-radius: 1.8em;
-  padding: 0.8em;
-  margin: 2em;
-  background-image: -o-linear-gradient(bottom, #FFB300 0%, #FFEA96 30%, #FFB300 82%);
-  background-image: -moz-linear-gradient(bottom, #FFB300 0%, #FFEA96 30%, #FFB300 82%);
-  background-image: -webkit-linear-gradient(bottom, #FFB300 0%, #FFEA96 30%, #FFB300 82%);
-  background-image: -ms-linear-gradient(bottom, #FFB300 0%, #FFEA96 30%, #FFB300 82%);
-  background-image: linear-gradient(to bottom, #FFB300 0%, #FFEA96 30%, #FFB300 82%);
-}
-.sms1:before {
-  content: "";
-  position: absolute;
-  right: 100%;
-  top: 1.7em; width: 0;
-  height: 0;
-  border-top: 1em solid transparent;
-  border-right: 1.5em solid #FFB300;
-  border-bottom: 0.8em solid transparent;
-}
-
-/* couleurs juste pour la relecture */
-abbr {
-  background-color: yellow;
-}
-q, blockquote {
-  color: grey;
-}
-:lang(en), i {
-  background-color: green;
-}
-em {
-  background-color: purple;
-}
-cite {
-  color: red;
-}
-.hashtag {
-  color: blue;
-}
-.warning {
-  color: red;
 }
 
