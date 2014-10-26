@@ -1,4 +1,3 @@
 tuto-epub
 =========
-
-création d’un tutoriel pour créer des epubs accessibles
+tutoriel pour créer des EPUBs accessibles
