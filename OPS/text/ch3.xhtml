@@ -47,11 +47,10 @@
     &lt;/head&gt;
     &lt;body&gt;
     </pre>
-    <p>J’utilise le <abbr>xhtml</abbr> plutôt que le <abbr>HTML</abbr> car il est moins permissif, il faut bien fermer les balises pour que ça fonctionne. Le code est plus robuste et a un fonctionnement plus prévisif sur les différentes plateformes.</p>
     <p>L’encodage et la langue sont tres importants aussi. Si l’encodage n’est pas bon on n’aura pas nos jolies apostrophes typographiques. Pour la langues c’est la principale du fichier.</p>
-    <p>Les lignes xmlns et xmlns:epub sont les liens vers les dictionnaires du langage <abbr>xhtml</abbr> et epub.</p>
+    <p>Les lignes xmlns et xmlns:epub sont les liens vers les dictionnaires du langage <abbr>XHTML</abbr> et epub.</p>
     <p>Dans la balise <i lang="en" xml:lang="en">title</i> on note le titre qui s’affichera dans l’onglet du navigateur donc en général on met le titre du chapitre. Il ne faut mettre aucune balise à l’intérieur.</p>
-    <p>Le fichier .css est celui qui permet de paramètrer l’aspect des différentes parties du texte. Pour l’accessibilité il ne faut pas mettre les styles à l’intérieur des balises mais utiliser des class ou des id. Cette façon permet en plus de pouvoir changer l’intégralité de l’aspect d’un livre facilement et de manière homogène.</p>
+    <p>Le fichier .css est celui qui permet de paramètrer l’aspect des différentes parties du texte. Il ne faut pas mettre les styles à l’intérieur des balises mais utiliser des class ou des id. Cette façon permet en plus de pouvoir changer l’intégralité de l’aspect d’un livre facilement et de manière homogène.</p>
     <p> Il est important de savoir que le css est juste de la décoration, les lecteurs d’écran ne le liront pas. On peut appeler une classe "vraiment-important" avec un style rouge clignotant, si on met le texte dans une balise span alors il sera bien visible (et pas très heureux) mais sera complêtement invisible pour les lexteurs d’écran et donc pour toute personne ne voyant pas le résultat.</p>
     <h4>Troisième étape, nettoyage et sémantique</h4>
     <p>Là on commence le gros du travail. Comme précédement le mieux est de commencer à identifier les différentes parties du fichier. Je travaille toujours fichier par fichier en gardant le <abbr>PDF</abbr> comme référence.</p>
