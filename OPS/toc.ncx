@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="fra">
+  <head>
+    <meta content="63add6a4-2fc3-4e53-8447-adfe53f115ce" name="dtb:uid"/>
+    <meta content="3" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Petit tuto pour apprendre à faire un EPUB accessible.</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="NavPoint-1" playOrder="1">
+      <navLabel>
+        <text>Avant-propos</text>
+      </navLabel>
+      <content src="text/avant-propos.xhtml"/>
+    </navPoint>
+    <navPoint id="NavPoint-2" playOrder="2">
+      <navLabel>
+        <text>Chapitre 1 Pourquoi faire un EPUB et pourquoi le faire accessible ?</text>
+      </navLabel>
+      <content src="text/ch1.xhtml"/>
+    </navPoint>
+    <navPoint id="NavPoint-3" playOrder="3">
+      <navLabel>
+        <text>Chapitre 2 Les bases d'un epub</text>
+      </navLabel>
+      <content src="text/ch2.xhtml"/>
+    </navPoint>
+  </navMap>
+</ncx>
