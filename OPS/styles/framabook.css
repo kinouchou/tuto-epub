@@ -1,0 +1,265 @@
+/**
+ * framabook.css
+ *
+ * Règles de style communes à toutes les pages de tous les framabooks.
+ * Du moins, en théorie. :-)
+ */
+
+/* Aide à la relecture -- désactiver cette ligne avant publication de l’EPUB */
+@import url(relecture.css);
+
+/* mise en page générale */
+.titre, .title {
+  page-break-before: always;
+}
+
+/*
+.titre-para {
+  display: inline;
+  font-size: 1em;
+  font-style: bold;
+}
+.titre-para + p {
+  display: inline;
+}
+*/
+
+/* Titres de paragraphe : (XXX c’est comme ça qu’on dit ?)
+ * le titre et paragraphe qui suit sont dans un même bloc de texte. */
+.titre-para,
+.titre-para + p {
+  display: inline;
+}
+.titre-para::before,
+.titre-para + p::after {
+  content: "";
+  display: block;
+  margin-bottom: 1em;
+}
+
+/* pages de présentation */
+.licence {
+  text-align: center;
+  width: 100%;
+  margin: 0 0 0 -3em;
+}
+h1 .titre, .licence {
+  display: block;
+  padding: 1em 0;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 .title {
+  font-size: 3em;
+}
+.title-livre {
+  text-align: center;
+}
+.auteur-livre {
+  width: 100%;
+  font-size: 1.5em;
+  text-align: center;
+}
+.couv {
+  height: 100%;
+}
+.licence img {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.frama {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* titres */
+.title {
+  text-align: center;
+}
+h1, h2 {
+  font-family: sans-serif;
+}
+h1 {
+  margin-top: 30%
+}
+div.titre {
+  font-style: sans-serif;
+  padding: 1em 0;
+  text-align: right;
+}
+.titre h2 {
+  padding: 1em 0;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+}
+.titre1 {
+  page-break-before: always;
+  text-align: right;
+  padding: 1em 0;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+}
+.titre1 p {
+  font-weight: bold;
+}
+.numero_partie {
+  font-family: serif;
+  font-variant: small-caps;
+}
+
+/* contenu */
+.auteur {
+  font-variant: small-caps;
+}
+h4 {
+  font-style: italic;
+}
+.lettrine:first-letter {
+  font-size: 2.2em;
+}
+p {
+  text-indent: 2em;
+}
+.auteur-epigraph {
+  text-align: right;
+  padding-bottom: 1.5em;
+}
+.epigraph {
+  margin-left: 25%;
+  padding: 1em 5em;
+  text-align: right;
+  font-size: 0.75em;
+}
+.intro {
+  font-style: italic;
+  padding-left: 2.2em;
+  padding-bottom: 1.5em;
+}
+
+blockquote, .citation {
+  padding: 1em 2em;
+}
+.chiffre-romain {
+  font-variant: small-caps;
+}
+.chiffre-romain sup {
+  font-variant: normal;
+}
+table {
+  margin: 2em;
+  text-align: center;
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #000;
+}
+.entete-ligne {
+  font-weight: bold;
+  width: 3em;
+}
+.entete-ligne, th {
+  background-color: #DDDDDD;
+  padding: 0.5em;
+}
+.entete {
+  border: 0;
+  background-color: #fff;
+}
+caption {
+  font-size: 0.8em;
+  font-family: sans-serif;
+  padding: 0 0 0.8em 0;
+}
+.references {
+  list-style-type: none;
+}
+br, p {
+  margin-bottom: 1em;
+}
+ol {
+  list-style-type: decimal;
+}
+.liste-alpha, .abc { /* XXX classes redondantes ? */
+  list-style-type: lower-alpha;
+}
+pre, code, .code {
+  background-color: #DDDDDD;
+  font-family: monospace;
+}
+pre {
+  padding-left: 2em;
+}
+.toc {
+  list-style-type: none;
+}
+
+/* lexique, annexe, biblio */
+dl code { /* XXX spécifique à la classe "lexique" ? */
+  font-family: serif;
+  font-style: italic;
+  background-color: #DDDDDD;
+  margin: 1em;
+  padding: 0 3em;
+  float: top;
+  text-indent: 0
+}
+dt, dd {
+  display: inline;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: 0 !important;
+}
+.annexe {
+  padding-left: 3em;
+}
+.annexe dt {
+  margin-left: -2em;
+}
+.lexique h3 {
+  font-family: sans-serif;
+}
+.biblio {
+  text-indent: -1em;
+  list-style-type: none;
+}
+.biblio li {
+  font-family: sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+}
+.biblio li ul {
+  font-size: 0.7em;
+}
+.biblio li ul li {
+  font-size: 0.7em;
+  font-family: serif;
+  font-weight: normal;
+}
+
+/* notes de bas de page */
+aside, .aside {
+  border-top: 1px solid;
+}
+aside ul, .aside ul {
+  list-style-type: none;
+}
+aside ul li, .aside ul li {
+  padding-bottom: 1em;
+}
+.figure {
+  border: 0.5em solid #DDDDDD;
+  font-size: 0.8em;
+  margin: 1em;
+  padding: 0 3em;
+  float: top;
+  text-indent: 0
+}
+
