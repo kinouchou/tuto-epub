@@ -169,10 +169,6 @@ td, th {
   border: 0;
   background-color: #fff;
 }
-
-.table2 th { /* XXX à supprimer ? */
-  padding: 0.5em 0;
-}
 caption {
   font-size: 0.8em;
   font-family: sans-serif;
@@ -184,7 +180,6 @@ caption {
 br, p {
   margin-bottom: 1em;
 }
-
 ol {
   list-style-type: decimal;
 }
@@ -257,9 +252,6 @@ aside ul, .aside ul {
 }
 aside ul li, .aside ul li {
   padding-bottom: 1em;
-}
-q::before, q::after { /* XXX wut? */
-  content: "";
 }
 .figure {
   border: 0.5em solid #DDDDDD;
