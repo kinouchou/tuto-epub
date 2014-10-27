@@ -24,7 +24,7 @@
     <code>application/epub+zip</code></p>
     <p>Il doit toujours être à la racine du dossier.</p>
 
-    <h3>dossier META-INF</h3>
+    <h3>dossier META-INF : les méta-données</h3>
     <h4>container.xml</h4>
     <a href="http://www.idpf.org/epub/30/spec/epub30-ocf.html#sec-container-metainf-container.xml">spec</a>
 <pre>&lt;?xml version="1.0"?&gt;
@@ -35,7 +35,7 @@
 &lt;/container&gt;</pre>
     <p>Bien faire attention en mettant le chemin complet de <code>content.opf</code></p>
 
-    <h3>dossier OPS</h3>
+    <h3>dossier OPS : le contenu</h3>
     <h4>fichier content.opf</h4>
     <p><a href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-package-elem">Spécifications de l’<abbr>idpf</abbr></a></p>
     <h5>l’entête</h5>
@@ -47,7 +47,7 @@
     xmlns:dcterms="http://purl.org/dc/terms/"
     version="3.0" xml:lang="en"
     unique-identifier="pub-identifier"&gt;</pre>
-    <p>Attention c'est ici qu'on dit la version de l'epub, bien indiquer la langue aussi. Pour la partie sur l'<a href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-opf-metadata-identifiers-pid">unique-identifier</a> j'ai encore des soucis pour comprendre comment on le crée. Les <code>xmlns="…"</code> sont très importants, ils permettent de dire quel « dictionnaire » de termes on utilise. C’est utile pour indiquer les différentes sections de l’EPUB.</p>
+    <p>Attention c'est ici qu'on dit la version de l'EPUB, bien indiquer la langue aussi. Pour la partie sur l'<a href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-opf-metadata-identifiers-pid">unique-identifier</a> j'ai encore des soucis pour comprendre comment on le crée. Les <code>xmlns="…"</code> sont très importants, ils permettent de dire quel « dictionnaire » de termes on utilise. C’est utile pour indiquer les différentes sections de l’EPUB.</p>
     <h5>metadata</h5>
 <pre>&lt;metadata&gt;
   &lt;dc:identifier id="pub-identifier"&gt;urn:isbn:numéro_isbn&lt;/dc:identifier&gt;
@@ -62,7 +62,7 @@
 &lt;/metadata&gt;</pre>
     <p>Il peut y avoir moins de <code>metadata</code> ou plus, les specs sont assez claires (pour une fois). Pour le <code>modified</code> c’est la date et l’heure sous la forme <code>yyyy-mm-jjThh:mm:ssZ</code></p>
     <h4>fichier toc.ncx</h4>
-    <h4>au moins un fichier .html ou xhtml</h4>
+    <h4>au moins un fichier .html ou .xhtml</h4>
     <p>Exemple de note de bas de page<a epub:type="noteref" href="#note_ch2-1" id="ref_ch2-1"> [1]</a></p>
 
     <h2 id="addenda-au-chapitre-2" epub:type="bodymatter foreword"><a href="#TOC">Addenda au chapitre 2 <span class="titre">Modèle d'addenda chère à Pouhiou</span></a></h2>
