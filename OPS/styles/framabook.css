@@ -195,14 +195,17 @@ pre {
 
 /* notes de bas de page : <aside epub:type="footnotes"> */
 aside,
+.aside,
 .epub-footnotes {
   border-top: 1px solid;
 }
 aside ul,
+.aside ul,
 .epub-footnotes ul {
   list-style-type: none;
 }
 aside ul li,
+.aside ul li,
 .epub-footnotes ul li {
   padding-bottom: 1em;
 }
