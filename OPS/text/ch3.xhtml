@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:epub="http://www.idpf.org/2007/ops"
-  lang="fr" xml:lang="fr">
+      xmlns:epub="http://www.idpf.org/2007/ops"
+      lang="fr" xml:lang="fr">
   <head>
     <title>Modifier un epub en framaEPUB</title>
-    <link href="../styles/stylesheet.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../styles/framabook.css" />
   </head>
-  <body>
-    <h1 epub:type="bodymatter chapter">3 <span class="titre">Modifier un EPUB en framaEPUB</span></h1>
-    <div id="TOC" epub:type="bodymatter toc">
+
+  <body epub:type="bodymatter chapter">
+    <h1 class="titre-chapitre">
+      <span class="numero_chapitre"> Chapitre 3 </span>
+      Modifier un EPUB en framaEPUB
+    </h1>
+    <nav id="TOC" class="epub-toc" epub:type="bodymatter toc">
       <ul>
         <li><a href="#ch3-01">Les fichiers <abbr>HTML</abbr></a></li>
       </ul>
-    </div>
+    </nav>
     <p>Fabriquer un EPUB fonctionne un peu comme fabriquer un livre. On commence par écrire le texte, faire la mise en page puis on met toues les pages ensembles dans le bon ordre, on vérifie que tout est bien présent puis on fait la reliure pour avoir un tout.</p>
     <p>Le <abbr>HTML</abbr> sera la mise en page. On se sert du code pour indiquer les chapitres, les titres, paragraphes et si on doit inclure des images, sons ou vidéos.</p>
     <p>On doit ensuite s’occuper de vérifier que tous les éléments du livre sont présents et les mettre dans l’ordre souhaité, c’est le rôle du fichier .opf et du .ncx.</p>
     <p> Enfin on relie le livre, c’est le moment où l’on compresse l’ensemble et où on donne l’extension .epub.</p>
 
-    <h2 id="ch3-01" epub:type="bodymatter subchapter">Les fichiers <abbr>HTML</abbr></h2>
-    <h3>Le problème</h3>
-    <p>Lorsque l’équipe des relecteurs des framabooks est passée, la source est transformée en <abbr>PDF</abbr> et en EPUB. Le fichier EPUB généré est lisible par les lecteurs d’EPUB et a un aspect correspondant au <abbr>PDF</abbr> mais a un code pas très lisible et peu voire pas de sémantique.</p>
-    <p>Pour la sémantique c’est en partie normal. Pour l’édition papier on a juste besoin d’utiliser des styles qui donneront l’aspect visible final. Par exemple on met en italique les mots étrangers, les titres d’œuvres et les mots importants. Mais par la suite rien ne distinguera un mot étranger d’un mot étranger important. Pour l’accessibilité c’est important et donc il y aura ce travail de distinction à faire.</p>
-    <p>Dans certains cas (et logiciels) l’EPUB généré n’aura même pas les balises sémantiques de bases telles que les <code>h1</code>, <code>h2</code>… et les balises de paragraphes. À la place il n’y aura que des conteneurs génériques <code>div</code> et <code>span</code>. Dans ce cas là il y aura un peu plus de travail à faire.</p>
-    <p>Pour le code ça vient surtout de la génération qui a tendance à empiler les styles et donc les balises pour optenir le résultat. Il y a donc là un gros travail de nettoyage pour ne garder que les balises et styles nécessaires.</p>
-    <p>Certains logiciels permettent de modifier le code des EPUB mais sont limités ou alors modifies eux-mêmes le fichier qu’on leur a confié. Pour garder le code comme on l’a écrit il vaut mieux passer par un éditeur de texte (et non un traitement de texte) de préférence avec coloration syntaxique. Pour ma part j’utilise Vim.</p>
-    <h3>Une solution</h3>
-    <p>Pour le nettoyage j’utilise beaucoup les expressions rationnelles, pour enlever les classes qui ont souvent un nom peu parlant (class1, class2, class3) pour les remplacer par des classes avec des noms plus parlants. Et aussi pour enlever les balises superflues (comme par exemple quand on a une balises span par lettre contenue dans le nom d’un auteur).</p>
-    <p>Le souci comme dit précédement c’est que pour des réultats visuels identiques on peut avoir une raison sémantique différente et que pour ça on ne peut pas tout faire automatiquement, le gros du travail se fait à la main.</p>
-    <p>Pour les framabooks j’ai un EPUB qui me sert de modèle pour la structure, celui qui est utilisé ici, dans lequel je remplace le contenu.</p>
-    <h4>Première étape, se repérer</h4>
-    <p>Quand on a décompressé l’EPUB il faut déterminer quel fichier correspond à chaque partie du livre. Ça peut parraître idiot mais souvent les noms des fichiers <abbr>HTML</abbr> ont des numéros qui des fois n’ont même pas d’ordre logique. Identifier et renommer chaque fichier est donc important.</p>
-    <p>Pour les relectures on fait souvent un fichier par chapitre, pour les EPUB j’utilise le même système. Techniquement on pourrait tout mettre dans le même fichier mais je trouve ça plus simple et si les fichiers sont trop lourds ça ralentit le fonctionnenment des liseuses.</p>
-    <p>Pour chaque livre on peut adapter le nom des fichiers et le découpage. Pour <cite>Histoire et culture du Libre</cite> j’ai par exemple opté pour un découpage par partie et par chapitre en nommant les fichiers part1-1 pour la partie 1 chapitre 1, part1-2 pour la partie 1 chapitre 2. Les noms ont peu d’importance si ce n’est qu’il est mieux d’être cohérent et que les noms permettent de s’y retrouver rapidement même si on a pas fait soi-même le découpage.</p>
-    <h4>Deuxième étape, avoir la bonne entête</h4>
-    <p>Pour cette partie là je fais juste un remplacement de l’entête existante par :</p>
+    <section id="ch3-01" epub:type="bodymatter subchapter">
+      <h2>Les fichiers <abbr>HTML</abbr></h2>
+      <h3>Le problème</h3>
+      <p>Lorsque l’équipe des relecteurs des framabooks est passée, la source est transformée en <abbr>PDF</abbr> et en EPUB. Le fichier EPUB généré est lisible par les lecteurs d’EPUB et a un aspect correspondant au <abbr>PDF</abbr> mais a un code pas très lisible et peu voire pas de sémantique.</p>
+      <p>Pour la sémantique c’est en partie normal. Pour l’édition papier on a juste besoin d’utiliser des styles qui donneront l’aspect visible final. Par exemple on met en italique les mots étrangers, les titres d’œuvres et les mots importants. Mais par la suite rien ne distinguera un mot étranger d’un mot étranger important. Pour l’accessibilité c’est important et donc il y aura ce travail de distinction à faire.</p>
+      <p>Dans certains cas (et logiciels) l’EPUB généré n’aura même pas les balises sémantiques de bases telles que les <code>h1</code>, <code>h2</code>… et les balises de paragraphes. À la place il n’y aura que des conteneurs génériques <code>div</code> et <code>span</code>. Dans ce cas là il y aura un peu plus de travail à faire.</p>
+      <p>Pour le code ça vient surtout de la génération qui a tendance à empiler les styles et donc les balises pour optenir le résultat. Il y a donc là un gros travail de nettoyage pour ne garder que les balises et styles nécessaires.</p>
+      <p>Certains logiciels permettent de modifier le code des EPUB mais sont limités ou alors modifies eux-mêmes le fichier qu’on leur a confié. Pour garder le code comme on l’a écrit il vaut mieux passer par un éditeur de texte (et non un traitement de texte) de préférence avec coloration syntaxique. Pour ma part j’utilise Vim.</p>
+      <h3>Une solution</h3>
+      <p>Pour le nettoyage j’utilise beaucoup les expressions rationnelles, pour enlever les classes qui ont souvent un nom peu parlant (class1, class2, class3) pour les remplacer par des classes avec des noms plus parlants. Et aussi pour enlever les balises superflues (comme par exemple quand on a une balises span par lettre contenue dans le nom d’un auteur).</p>
+      <p>Le souci comme dit précédement c’est que pour des réultats visuels identiques on peut avoir une raison sémantique différente et que pour ça on ne peut pas tout faire automatiquement, le gros du travail se fait à la main.</p>
+      <p>Pour les framabooks j’ai un EPUB qui me sert de modèle pour la structure, celui qui est utilisé ici, dans lequel je remplace le contenu.</p>
+      <h4>Première étape, se repérer</h4>
+      <p>Quand on a décompressé l’EPUB il faut déterminer quel fichier correspond à chaque partie du livre. Ça peut parraître idiot mais souvent les noms des fichiers <abbr>HTML</abbr> ont des numéros qui des fois n’ont même pas d’ordre logique. Identifier et renommer chaque fichier est donc important.</p>
+      <p>Pour les relectures on fait souvent un fichier par chapitre, pour les EPUB j’utilise le même système. Techniquement on pourrait tout mettre dans le même fichier mais je trouve ça plus simple et si les fichiers sont trop lourds ça ralentit le fonctionnenment des liseuses.</p>
+      <p>Pour chaque livre on peut adapter le nom des fichiers et le découpage. Pour <cite>Histoire et culture du Libre</cite> j’ai par exemple opté pour un découpage par partie et par chapitre en nommant les fichiers part1-1 pour la partie 1 chapitre 1, part1-2 pour la partie 1 chapitre 2. Les noms ont peu d’importance si ce n’est qu’il est mieux d’être cohérent et que les noms permettent de s’y retrouver rapidement même si on a pas fait soi-même le découpage.</p>
+      <h4>Deuxième étape, avoir la bonne entête</h4>
+      <p>Pour cette partie là je fais juste un remplacement de l’entête existante par :</p>
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"
@@ -47,73 +52,74 @@
   &lt;/head&gt;
   &lt;body&gt;
     …</pre>
-    <p>L’encodage et la langue sont très importants aussi. Si l’encodage n’est pas bon on n’aura pas nos jolies apostrophes typographiques. Pour la langues c’est la principale du fichier.</p>
-    <p>Les lignes <code>xmlns</code> et <code>xmlns:epub</code> sont les liens vers les dictionnaires des langages <abbr>XHTML</abbr> et EPUB.</p>
-    <p>Dans la balise <code>title</code> on note le titre qui s’affichera dans l’onglet du navigateur donc en général on met le titre du chapitre. Il ne faut mettre aucune balise à l’intérieur.</p>
-    <p>Le fichier .css est celui qui permet de paramètrer l’aspect des différentes parties du texte. Il ne faut pas mettre les styles à l’intérieur des balises mais utiliser des <code>class</code> ou des <code>id</code>. Cette façon permet en plus de pouvoir changer l’intégralité de l’aspect d’un livre facilement et de manière homogène.</p>
-    <p> Il est important de savoir que le <abbr>CSS</abbr> est juste de la décoration, les lecteurs d’écran ne le liront pas. On peut appeler une classe "vraiment-important" avec un style rouge clignotant, si on met le texte dans une balise <code>span</code> alors il sera bien visible (et pas très heureux) mais sera complêtement invisible pour les lecteurs d’écran et donc pour toute personne ne voyant pas le résultat.</p>
-    <h4>Troisième étape, nettoyage et sémantique</h4>
-    <p>Là on commence le gros du travail. Comme précédement le mieux est de commencer à identifier les différentes parties du fichier. Je travaille toujours fichier par fichier en gardant le <abbr>PDF</abbr> comme référence.</p>
-    <p>Commencer par regarder tout ce qui peut être supprimé, remplacer par expression rationnelle. Chaque livre est différent, et comme la chaine d’édition est différente aussi il faut souvent adapter les expressions au livre en cours.</p>
-    <p>Ensuite on peut ajouter à la sémantique déjà présente celle plus précise du <abbr>HTML</abbr>.</p>
+      <p>L’encodage et la langue sont très importants aussi. Si l’encodage n’est pas bon on n’aura pas nos jolies apostrophes typographiques. Pour la langues c’est la principale du fichier.</p>
+      <p>Les lignes <code>xmlns</code> et <code>xmlns:epub</code> sont les liens vers les dictionnaires des langages <abbr>XHTML</abbr> et EPUB.</p>
+      <p>Dans la balise <code>title</code> on note le titre qui s’affichera dans l’onglet du navigateur donc en général on met le titre du chapitre. Il ne faut mettre aucune balise à l’intérieur.</p>
+      <p>Le fichier .css est celui qui permet de paramètrer l’aspect des différentes parties du texte. Il ne faut pas mettre les styles à l’intérieur des balises mais utiliser des <code>class</code> ou des <code>id</code>. Cette façon permet en plus de pouvoir changer l’intégralité de l’aspect d’un livre facilement et de manière homogène.</p>
+      <p> Il est important de savoir que le <abbr>CSS</abbr> est juste de la décoration, les lecteurs d’écran ne le liront pas. On peut appeler une classe "vraiment-important" avec un style rouge clignotant, si on met le texte dans une balise <code>span</code> alors il sera bien visible (et pas très heureux) mais sera complêtement invisible pour les lecteurs d’écran et donc pour toute personne ne voyant pas le résultat.</p>
+      <h4>Troisième étape, nettoyage et sémantique</h4>
+      <p>Là on commence le gros du travail. Comme précédement le mieux est de commencer à identifier les différentes parties du fichier. Je travaille toujours fichier par fichier en gardant le <abbr>PDF</abbr> comme référence.</p>
+      <p>Commencer par regarder tout ce qui peut être supprimé, remplacer par expression rationnelle. Chaque livre est différent, et comme la chaine d’édition est différente aussi il faut souvent adapter les expressions au livre en cours.</p>
+      <p>Ensuite on peut ajouter à la sémantique déjà présente celle plus précise du <abbr>HTML</abbr>.</p>
 
-    <table border="1">
-      <caption>Exemple de distinction entre la typographie et la sémantique.</caption>
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">typographie</th>
-          <th scope="col"><abbr>HTML</abbr></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Titre de livre</td>
-          <td>italique</td>
-          <td>&lt;cite class="titre"&gt;…&lt;/cite&gt;</td>
-        </tr>
-        <tr>
-          <td>locutions étrangères</td>
-          <td>italique</td>
-          <td>&lt;i lang="…"&gt;…&lt;/i&gt;</td>
-        </tr>
-        <tr>
-          <td>pensées-rêves</td>
-          <td>??</td>
-          <td>&lt;i&gt;…&lt;/i&gt;</td>
-        </tr>
-        <tr>
-          <td>citation courte</td>
-          <td>italique ou guillemets?</td>
-          <td>&lt;cite&gt;…&lt;/cite&gt;</td>
-        </tr>
-        <tr>
-          <td>citation longue</td>
-          <td>italique ou guillemets</td>
-          <td>&lt;bloquote&gt;…&lt;/bloquote&gt;</td>
-        </tr>
-        <tr>
-          <td>mots importants</td>
-          <td>italique</td>
-          <td>&lt;em&gt;…&lt;/em&gt;</td>
-        </tr>
-        <tr>
-          <td>mots très importants</td>
-          <td>??</td>
-          <td>&lt;strong&gt;…&lt;/strong&gt;</td>
-        </tr>
-        <tr>
-          <td>sigles lus lettre à lettre</td>
-          <td></td>
-          <td>&lt;abbr&gt;…&lt;abbr&gt;</td>
-        </tr>
-        <tr>
-          <td>abbréviation, nombre romain…</td>
-          <td></td>
-          <td>&lt;abbr title="…"&gt;…&lt;/abbr&gt;</td>
-        </tr>
-      </tbody>
-    </table>
+      <table border="1">
+        <caption>Exemple de distinction entre la typographie et la sémantique.</caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">typographie</th>
+            <th scope="col"><abbr>HTML</abbr></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Titre de livre</td>
+            <td>italique</td>
+            <td>&lt;cite class="titre"&gt;…&lt;/cite&gt;</td>
+          </tr>
+          <tr>
+            <td>locutions étrangères</td>
+            <td>italique</td>
+            <td>&lt;i lang="…"&gt;…&lt;/i&gt;</td>
+          </tr>
+          <tr>
+            <td>pensées-rêves</td>
+            <td>??</td>
+            <td>&lt;i&gt;…&lt;/i&gt;</td>
+          </tr>
+          <tr>
+            <td>citation courte</td>
+            <td>italique ou guillemets?</td>
+            <td>&lt;cite&gt;…&lt;/cite&gt;</td>
+          </tr>
+          <tr>
+            <td>citation longue</td>
+            <td>italique ou guillemets</td>
+            <td>&lt;bloquote&gt;…&lt;/bloquote&gt;</td>
+          </tr>
+          <tr>
+            <td>mots importants</td>
+            <td>italique</td>
+            <td>&lt;em&gt;…&lt;/em&gt;</td>
+          </tr>
+          <tr>
+            <td>mots très importants</td>
+            <td>??</td>
+            <td>&lt;strong&gt;…&lt;/strong&gt;</td>
+          </tr>
+          <tr>
+            <td>sigles lus lettre à lettre</td>
+            <td></td>
+            <td>&lt;abbr&gt;…&lt;abbr&gt;</td>
+          </tr>
+          <tr>
+            <td>abbréviation, nombre romain…</td>
+            <td></td>
+            <td>&lt;abbr title="…"&gt;…&lt;/abbr&gt;</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </body>
 </html>
 
