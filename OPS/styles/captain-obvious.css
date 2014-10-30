@@ -1,0 +1,35 @@
+/**
+ * Captain Obvious to the rescue!
+ *
+ * Utiliser des classes pour des règles aussi triviales est affaire de goût.
+ * Pour ceux qui refusent à corps et à cri d’utiliser des styles en ligne…
+ * ou qui pensent que c’est plus lisible avec une classe.
+ */
+
+/* voir `titre-paragraphe' dans framabook.css pour les titres de paragraphe */
+.inline {
+  display: inline;
+}
+
+/* alignement */
+.gauche {
+  text-align: left;
+}
+.centre {
+  text-align: center;
+}
+.droite {
+  text-align: right;
+}
+
+/* styles de texte */
+.gras {
+  font-weight: bold;
+}
+.italique {
+  font-style: italic;
+}
+.droit {
+  font-style: normal;
+}
+
