@@ -5,12 +5,6 @@
  * Les règles spécifiques à un livre devraient être dans une autre feuille de
  * style, e.g. framabook-tuto-epub.css
  *
- * Les classes préfixées .epub- sont associées aux éléments EPUB éponymes,
- *   e.g. .epub-epigraph est associée à <blockquote epub:type="epigraph">
- *   http://www.idpf.org/epub/vocab/structure/#h_partitions
- *
- * Les classes non préfixées sont applicables à n’importe quel élément XHTML.
- *
  * On distingue quatre partitions EPUB, applicables à <body> ou <section> :
  *   cover, frontmatter, bodymatter, backmatter
  *   http://www.idpf.org/epub/vocab/structure/#h_partitions
@@ -18,10 +12,19 @@
  * … et cinq niveaux de divisions EPUB, applicables à <body> ou <section> :
  *   volume, part, chapter, subchapter, division
  *   http://www.idpf.org/epub/vocab/structure/#h_divisions
+ *
+ * Les classes préfixées .epub- sont associées aux éléments EPUB éponymes,
+ *   e.g. .epub-footnotes est associée à <aside epub:type="footnotes">
+ * Les classes non préfixées sont applicables à n’importe quel élément XHTML.
  */
 
 /* Aide à la relecture -- désactiver cette ligne avant publication de l’EPUB */
 @import url(relecture.css);
+
+body {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 
 /*******************************************************************************
@@ -50,8 +53,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2em;
 }
 .titre-volume .epub-subtitle {
-  font-weight: normal;
-  font-size: 0.5em;
+  font-size: 0.75em;
 }
 
 /* titre de la partie du livre : <h1> */
@@ -68,6 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .titre-partie .epub-subtitle {
   display: block;
+  font-size: 0.75em;
 }
 
 /* titre du chapitre : <h2>
@@ -114,8 +117,11 @@ h1, h2, h3, h4, h5, h6 {
 .epub-cover {
   text-align: center;
 }
-.epub-cover .auteur {
-  font-variant: small-caps;
+.epub-cover p {
+  text-indent: 0;
+}
+.epub-cover .signature {
+  font-size: 1.5em;
 }
 .epub-cover .licence {
   padding: 1em 0;
@@ -126,22 +132,119 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /*******************************************************************************
- * EPUB frontmatter: "Preliminary material to the main content of a publication,
- * such as tables of contents, dedications, etc."
- * http://www.idpf.org/epub/vocab/structure/#h_partitions
+ * Listes génériques XHTML
+ * utilisées dans le corps du document
  */
 
-.toc,
-.epub-toc {
+.liste-alpha {
+  list-style-type: lower-alpha;
+}
+
+/* liste de type index alphabétique : glossaire, bibliographie…
+ * = séparateurs du type <h3>A</h3> + listes du type <ol>, <ul> ou <dl> */
+.index-alpha h3 {
+  font-size: 2em;
+  margin: 1em 0 0 0.2em;
+}
+.index-alpha ol,
+.index-alpha ul,
+.index-alpha dl {
+  margin-top: 0;
   list-style-type: none;
+  font-family: sans-serif;
+}
+
+/* listes de définitions “inline” :
+ * même présentation que les paragraphes (text-indent & margin-bottom) */
+dl.liste-paragraphe dt {
+  display: inline;
+  font-weight: bold;
+  margin-left: 2em;
+}
+dl.liste-paragraphe dd {
+  text-indent: 2em;
+  margin-left: 0;
+  margin-bottom: 1em; /* idem p et br */
+}
+dl.liste-paragraphe dt + dd {
+  display: inline;
+}
+dl.liste-paragraphe dt + dd::after {
+  content: "";
+  display: block;
+  margin-bottom: 1em; /* idem p et br */
 }
 
 
 /*******************************************************************************
- * EPUB bodymatter: "The main content of a publication."
- * http://www.idpf.org/epub/vocab/structure/#h_partitions
+ * Listes de références EPUB
+ * utilisées en annexe ou en pied de page
  */
 
+/* références : http://www.idpf.org/epub/vocab/structure/#h_references
+ * - la première ligne de chaque entrée est en retrait */
+.epub-appendix dl.liste-paragraphe {
+  padding-left: 3em;
+}
+.epub-appendix dl.liste-paragraphe dt {
+  margin-left: -2em;
+  margin-top: 0.2em;
+}
+.epub-appendix ol {
+  list-style-type: none;
+  padding-left: 2em;
+}
+.epub-appendix li {
+  text-indent: -1em;
+  margin-top: 0.2em;
+}
+
+/* notes de bas de page */
+.epub-footnotes {
+  border-top: 1px solid;
+}
+.epub-footnotes ul {
+  list-style-type: none;
+}
+.epub-footnotes ul li {
+  padding-bottom: 1em;
+}
+
+
+/*******************************************************************************
+ * Table des matières EPUB
+ * http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-nav-def
+ */
+
+.epub-toc ol {
+  list-style-type: none;
+}
+.epub-toc > ol > li {
+  margin-top: 0.5em;
+  font-weight: bold;
+  font-size: 1.15em;
+}
+.epub-toc li {
+  font-weight: normal;
+  font-size: 0.87em;
+}
+.epub-toc li a {
+  color: #000;
+  text-decoration: none;
+}
+.epub-toc li a:hover {
+  text-decoration: underline;
+}
+.epub-toc ol ol ol {
+  display: none; /* limitation à 2 niveaux de chapitres */
+}
+
+
+/*******************************************************************************
+ * Contenu principal
+ */
+
+/* paragraphes */
 p {
   text-indent: 2em;
 }
@@ -152,22 +255,43 @@ br, p {
   font-size: 2.2em;
 }
 
-blockquote, .citation {
-  padding: 1em 2em;
+/* tableaux */
+table {
+  margin: 2em auto;
+  text-align: center;
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #000;
+}
+th {
+  background-color: #ddd;
+  padding: 0.5em;
+}
+caption {
+  font-size: 0.8em;
+  font-family: sans-serif;
+  padding: 0 0 0.8em 0;
 }
 
-pre, code, .code {
-  background-color: #DDDDDD;
+/* code */
+pre, code {
+  background-color: #ddd;
   font-family: monospace;
 }
 pre {
   padding-left: 2em;
 }
 
-/* TODO: définir un microformat "auteur" plus générique */
+/* auteurs & citations
+ * TODO: définir un microformat plus générique */
+blockquote {
+  padding: 1em 2em;
+}
 .auteur {
   font-variant: small-caps;
 }
+.signature,
 .auteur-epigraph {
   text-align: right;
   padding-bottom: 1.5em;
@@ -180,12 +304,7 @@ pre {
   font-size: 0.75em;
 }
 
-.intro {
-  font-style: italic;
-  padding-left: 2.2em;
-  padding-bottom: 1.5em;
-}
-
+/* numérotation */
 .chiffre-romain {
   font-variant: small-caps;
 }
@@ -193,138 +312,35 @@ pre {
   font-variant: normal;
 }
 
-/* notes de bas de page : <aside epub:type="footnotes"> */
-aside,
-.aside,
-.epub-footnotes {
-  border-top: 1px solid;
-}
-aside ul,
-.aside ul,
-.epub-footnotes ul {
-  list-style-type: none;
-}
-aside ul li,
-.aside ul li,
-.epub-footnotes ul li {
-  padding-bottom: 1em;
-}
+/* spécifique « Histoires Libres »
+.figure {
+  border: 0.5em solid #ddd;
+  font-size: 0.8em;
+  margin: 1em;
+  padding: 0 3em;
+  float: top;
+  text-indent: 0
+} */
 
-/**
- * tableaux
-table {
-  margin: 2em;
-  text-align: center;
-  border-collapse: collapse;
+/* spécifique « Libres Conseils »
+blockquote, .citation {
+  padding: 1em 2em;
 }
-td, th {
-  border: 1px solid #000;
-}
-.entete-ligne {
-  font-weight: bold;
-  width: 3em;
-}
-.entete-ligne, th {
-  background-color: #DDDDDD;
-  padding: 0.5em;
-}
+.intro {
+  font-style: italic;
+  padding-left: 2.2em;
+  padding-bottom: 1.5em;
+} */
+
+/* spécifique « Option Libre » (table_compatibilité.xhtml)
 .entete {
   border: 0;
   background-color: #fff;
 }
-caption {
-  font-size: 0.8em;
-  font-family: sans-serif;
-  padding: 0 0 0.8em 0;
-}
-*/
-
-ol {
-  list-style-type: decimal;
-}
-.liste-alpha, .abc { /* XXX classes redondantes ? */
-  list-style-type: lower-alpha;
-}
-.references {
-  list-style-type: none;
-}
-
-/* spécifique Histoires Libres
-.figure {
-  border: 0.5em solid #DDDDDD;
-  font-size: 0.8em;
-  margin: 1em;
-  padding: 0 3em;
-  float: top;
-  text-indent: 0
-} */
-
-/* spécifique Libres Conseils
-h4 {
-  font-style: italic;
-} */
-
-
-/**
- * EPUB backmatter: "Ancillary material occurring after the main content of a
- * publication, such as indices, appendices, etc."
- * http://www.idpf.org/epub/vocab/structure/#h_partitions
- */
-
-/* lexique: http://www.idpf.org/epub/vocab/structure/#h_glossaries */
-.lexique h3,
-.epub-glossary h3 {
-  font-family: sans-serif;
-}
-dl code { /* XXX spécifique à la classe "lexique" ? */
-  font-family: serif;
-  font-style: italic;
-  background-color: #DDDDDD;
-  margin: 1em;
-  padding: 0 3em;
-  float: top;
-  text-indent: 0
-}
-dt, dd {
-  display: inline;
-}
-dt {
+.entete-ligne {
+  width: 3em;
+  padding: 0.5em;
+  background-color: #ddd;
   font-weight: bold;
-}
-dd {
-  margin-left: 0 !important;
-}
-
-/* annexe : http://www.idpf.org/epub/vocab/structure/#h_references */
-.annexe,
-.epub-appendix {
-  padding-left: 3em;
-}
-.annexe dt,
-.epub-appendix dt {
-  margin-left: -2em;
-}
-
-/* bibliographie : http://www.idpf.org/epub/vocab/structure/#h_bibliographies */
-.biblio,
-.epub-biblioraphy {
-  text-indent: -1em;
-  list-style-type: none;
-}
-.biblio li,
-.epub-bibliography li {
-  font-family: sans-serif;
-  font-size: 2em;
-  font-weight: bold;
-}
-.biblio li ul,
-.epub-bibliography li ul {
-  font-size: 0.7em;
-}
-.biblio li ul li,
-.epub-bibliography li ul li {
-  font-size: 0.7em;
-  font-family: serif;
-  font-weight: normal;
-}
+} */
 

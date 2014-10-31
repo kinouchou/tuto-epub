@@ -2,11 +2,7 @@
  * Ce fichier n’est destiné qu’à assurer la compatibilité ascendante.
  */
 
-@import url(epub-cover.css);
-@import url(epub-frontmatter.css);
-@import url(epub-bodymatter.css);
-@import url(epub-backmatter.css);
-
+@import url(framabook.css);
 @import url(captain-obvious.css);
 @import url(sms.css);
 
