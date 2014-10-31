@@ -32,7 +32,7 @@ body {
  * On prévoit des styles spécifiques aux 3 premiers niveaux de division EPUB :
  *
  *   epub:volume      <h1>      .titre-volume
- *   epub:part        <h1>      .titre-partie
+ *   epub:part        <h1>      .titre-partie   (optionnel)
  *   epub:chapter     <h2>      .titre-chapitre
  *   epub:subchapter  <h3>
  *   epub:division    <h[456]>
@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.75em;
 }
 
-/* titre de la partie du livre : <h1> */
+/* titre de partie du livre : <h1> */
 .titre-partie {
   page-break-before: always;
   margin-top: 30%;
@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid;
   font-size: 2em;
 }
-.titre-partie .numero_partie {
+.titre-partie .numero-partie {
   font-variant: small-caps;
 }
 .titre-partie .epub-subtitle {
@@ -73,9 +73,9 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.75em;
 }
 
-/* titre du chapitre : <h2>
+/* titre de chapitre : <h2>
  * - le numéro du chapitre peut être placé au-dessus du nom du chapitre
- *   s’il est dans un <span class="numero_chapitre"> */
+ *   s’il est dans un <span class="numero-chapitre"> */
 .titre-chapitre {
   page-break-before: always;
   margin-top: 30%;
@@ -84,7 +84,7 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid;
   text-align: right;
 }
-.titre-chapitre .numero_chapitre {
+.titre-chapitre .numero-chapitre {
   display: block;
   float: right;
   margin-top: -2.5em;
