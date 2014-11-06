@@ -39,7 +39,6 @@
  */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: sans-serif;
   font-weight: bold;
 }
 
@@ -234,7 +233,6 @@ td, th {
 }
 caption {
   font-size: 0.8em;
-  font-family: sans-serif;
   padding: 0 0 0.8em 0;
 }
 */
@@ -272,12 +270,7 @@ h4 {
  */
 
 /* lexique: http://www.idpf.org/epub/vocab/structure/#h_glossaries */
-.lexique h3,
-.epub-glossary h3 {
-  font-family: sans-serif;
-}
 dl code { /* XXX spécifique à la classe "lexique" ? */
-  font-family: serif;
   font-style: italic;
   background-color: #DDDDDD;
   margin: 1em;
@@ -313,7 +306,6 @@ dd {
 }
 .biblio li,
 .epub-bibliography li {
-  font-family: sans-serif;
   font-size: 2em;
   font-weight: bold;
 }
@@ -324,7 +316,6 @@ dd {
 .biblio li ul li,
 .epub-bibliography li ul li {
   font-size: 0.7em;
-  font-family: serif;
   font-weight: normal;
 }
 
