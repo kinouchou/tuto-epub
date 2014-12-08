@@ -12,7 +12,7 @@
     <div id="TOC" epub:type="bodymatter toc">
       <ul>
         <li><a href="#ch2-01">Les différents fichiers obligatoires à un EPUB</a></li>
-        <li><a href="#addenda-au-chapitre-2">Addenda au chapitre 2 — Modèle d'addenda chère à Pouhiou</a></li>
+        <li><a href="#ch2-02">Créer le fichier final</a></li>
       </ul>
     </div>
     <p>Un EPUB est un ensemble de fichiers (la plupart en <abbr>HTML</abbr>) compressés et ayant une extension .epub. Il est plus simple de faire un dossier par EPUB, de mettre dans ce dossier les fichiers et dossiers obligatoires. S’il y a besoin de fichiers intéressants pour le projets mais n’entrant pas dans l’EPUB final il vaut mieux les mettre dans un dossier à la racine de l’EPUB et de bien faire attention lors de la compression du dossier final pour ne pas inclure ce dossier annexe.</p>
@@ -47,7 +47,7 @@
     xmlns:dcterms="http://purl.org/dc/terms/"
     version="3.0" xml:lang="en"
     unique-identifier="pub-identifier"&gt;</pre>
-    <p>Attention c'est ici qu'on dit la version de l'EPUB, bien indiquer la langue aussi. Pour la partie sur l'<a href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-opf-metadata-identifiers-pid">unique-identifier</a> j'ai encore des soucis pour comprendre comment on le crée. Les <code>xmlns="…"</code> sont très importants, ils permettent de dire quel « dictionnaire » de termes on utilise. C’est utile pour indiquer les différentes sections de l’EPUB.</p>
+    <p>Attention c'est ici qu'on dit la version de l'EPUB, bien indiquer la langue aussi. Pour la partie sur l'<a href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-opf-metadata-identifiers-pid">unique-identifier</a>. On peut créer le numéro unique sur le site <a href="http://www.famkruithof.net/uuid/uuidgen">famkruithof.net</a>. Les <code>xmlns="…"</code> sont très importants, ils permettent de dire quel « dictionnaire » de termes on utilise. C’est utile pour indiquer les différentes sections de l’EPUB.</p>
     <h5>metadata</h5>
 <pre>&lt;metadata&gt;
   &lt;dc:identifier id="pub-identifier"&gt;urn:isbn:numéro_isbn&lt;/dc:identifier&gt;
@@ -65,10 +65,6 @@
     <h4>au moins un fichier .html ou .xhtml</h4>
     <p>Exemple de note de bas de page<a epub:type="noteref" href="#note_ch2-1" id="ref_ch2-1"> [1]</a></p>
 
-    <h2 id="addenda-au-chapitre-2" epub:type="bodymatter foreword"><a href="#TOC">Addenda au chapitre 2 <span class="titre">Modèle d'addenda chère à Pouhiou</span></a></h2>
-    <div class="addenda">
-      <p>Contenu de l'addenda.</p>
-    </div>
 
     <aside epub:type="footnotes">
     <ol class="references" epub:type="footnote">
