@@ -38,10 +38,19 @@
       modifier pour le numéro unique
       </li>
       <li>
+<br /> 1/ il faut *un* élément &lt;nav epub:type="toc"&gt; dans un epub
+<br /> 23:38 &lt;kaze&gt; pas zéro, pas plusieurs
+<br /> 23:38 &lt;kaze&gt; un et un seul
+<br /> 2/ un &lt;nav&gt; doit contenir un &lt;h[123456]&gt; + un &lt;ol&gt;. Seul le &lt;nav epub:type="toc"&gt; a le droit de ne pas avoir de &lt;h[123456]&gt;.
+<br />   == si on fait un sommaire « simple » avec nav et epub:type="toc" on peut faire une toc plus complête ailleur sans avoir de nav et ses limitationsi&lt;br /&gt;
+<br />   sinon on peut essayer de faire une toc avec des liens vers les parties et chapitres, et juste le nom des sous-chapitres sans lien
+<br />   23:50 &lt;kaze&gt; comme ça, le gars clique sur le chapitre, et il arrive sur le sommaire du chapitre
+<br />   23:50 &lt;kaze&gt; mais il a quand même un aperçu du chapitre
       </li>
-      <li>
+      <li>sommaire en début + toc à la fin
       </li>
-      <li>
+      <li>zip -rX histoire-libre.epub mimetype META-INF OPS
+      http://ebooks.stackexchange.com/questions/257/how-to-repack-an-epub-file-from-command-line
       </li>
       <li>
       </li>
