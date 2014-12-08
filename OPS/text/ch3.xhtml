@@ -28,7 +28,7 @@
     <p>Certains logiciels permettent de modifier le code des EPUB mais sont limités ou alors modifies eux-mêmes le fichier qu’on leur a confié. Pour garder le code comme on l’a écrit il vaut mieux passer par un éditeur de texte (et non un traitement de texte) de préférence avec coloration syntaxique. Pour ma part j’utilise Vim.</p>
     <h3>Une solution</h3>
     <p>Pour le nettoyage j’utilise beaucoup les expressions rationnelles, pour enlever les classes qui ont souvent un nom peu parlant (class1, class2, class3) pour les remplacer par des classes avec des noms plus parlants. Et aussi pour enlever les balises superflues (comme par exemple quand on a une balises span par lettre contenue dans le nom d’un auteur).</p>
-    <p>Le souci comme dit précédement c’est que pour des réultats visuels identiques on peut avoir une raison sémantique différente et que pour ça on ne peut pas tout faire automatiquement, le gros du travail se fait à la main.</p>
+    <p>Le souci comme dit précédement c’est que pour des résultats visuels identiques on peut avoir une raison sémantique différente et que pour ça on ne peut pas tout faire automatiquement, le gros du travail se fait à la main.</p>
     <p>Pour les framabooks j’ai un EPUB qui me sert de modèle pour la structure, celui qui est utilisé ici, dans lequel je remplace le contenu.</p>
     <h4>Première étape, se repérer</h4>
     <p>Quand on a décompressé l’EPUB il faut déterminer quel fichier correspond à chaque partie du livre. Ça peut parraître idiot mais souvent les noms des fichiers <abbr>HTML</abbr> ont des numéros qui des fois n’ont même pas d’ordre logique. Identifier et renommer chaque fichier est donc important.</p>
@@ -70,7 +70,7 @@
         <tr>
           <td>Titre de livre</td>
           <td>italique</td>
-          <td>&lt;cite class="titre"&gt;…&lt;/cite&gt;</td>
+          <td>&lt;cite&gt;…&lt;/cite&gt;</td>
         </tr>
         <tr>
           <td>locutions étrangères</td>
@@ -114,6 +114,8 @@
         </tr>
       </tbody>
     </table>
+        <p>Pour les dialogues il n’y a rien de spécialement prévu en HTML, donc on peut soit utiliser les balises de paragraphes soit des listes.</p>
+        <p>Il faut bien penser à la question sémantique lorsqu’on met les balises et non à l’apparence. Il faut aussi regarder le site du <a href="http://www.w3.org/TR/html5/dom.html#flow-content">W3C</a> pour vérifier l’utilisation des balises et savoir si des changements ont été apportés.</p>
   </body>
 </html>
 
