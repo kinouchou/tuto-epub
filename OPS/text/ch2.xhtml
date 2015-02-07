@@ -9,10 +9,11 @@
   </head>
 
   <body epub:type="bodymatter chapter">
-    <h1 class="titre-chapitre">
-      <span class="numero_chapitre"> Chapitre 2 </span>
+    <h2 class="titre-chapitre">
+      <span class="numero-chapitre"> Chapitre 2 </span>
       Les bases d’un EPUB
-    </h1>
+    </h2>
+
     <nav id="TOC" class="epub-toc" epub:type="bodymatter toc">
       <ul>
         <li><a href="#ch2-01">Les différents fichiers obligatoires à un EPUB</a></li>
@@ -20,18 +21,19 @@
         <li><a href="#ch2-03">Vérifier l’EPUB</a></li>
       </ul>
     </nav>
+
     <p>Un EPUB est un ensemble de fichiers (la plupart en <abbr>HTML</abbr>) compressés et ayant une extension .epub. Il est plus simple de faire un dossier par EPUB, de mettre dans ce dossier les fichiers et dossiers obligatoires. S’il y a besoin de fichiers intéressants pour le projets mais n’entrant pas dans l’EPUB final il vaut mieux les mettre dans un dossier à la racine de l’EPUB et de bien faire attention lors de la compression du dossier final pour ne pas inclure ce dossier annexe.</p>
 
     <section id="ch2-01" epub:type="bodymatter subchapter">
-      <h2>Les différents fichiers obligatoires à un EPUB</h2>
+      <h3>Les différents fichiers obligatoires à un EPUB</h3>
 
-      <h3>fichier mimetype</h3>
+      <h4>fichier mimetype</h4>
       <p>Il contient une seule ligne :
       <code>application/epub+zip</code></p>
       <p>Il doit toujours être à la racine du dossier.</p>
 
-      <h3>dossier META-INF : les méta-données</h3>
-      <h4>container.xml</h4>
+      <h4>dossier META-INF : les méta-données</h4>
+      <h5>container.xml</h5>
       <a href="http://www.idpf.org/epub/30/spec/epub30-ocf.html#sec-container-metainf-container.xml">spec</a>
 <pre>&lt;?xml version="1.0"?&gt;
 &lt;container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"&gt;
@@ -41,20 +43,20 @@
 &lt;/container&gt;</pre>
       <p>Bien faire attention en mettant le chemin complet de <code>content.opf</code></p>
 
-      <h3>dossier OPS : le contenu</h3>
-      <h4>fichier content.opf</h4>
+      <h4>dossier OPS : le contenu</h4>
+      <h5>fichier content.opf</h5>
       <p><a href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-package-elem">Spécifications de l’<abbr>idpf</abbr></a></p>
-      <h5>l’entête</h5>
+      <h6>l’entête</h6>
       <pre>&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;</pre>
       <p><code>standalone="no"</code> signifie que le fichier n'est pas autonome, c'est pas nécessaire de le noter car c'est sa valeur par défaut.</p>
-      <h5>package</h5>
+      <h6>package</h6>
       <pre>&lt;package xmlns="http://www.idpf.org/2007/opf"
       xmlns:dc="http://purl.org/dc/elements/1.1/"
       xmlns:dcterms="http://purl.org/dc/terms/"
       version="3.0" xml:lang="en"
       unique-identifier="pub-identifier"&gt;</pre>
       <p>Attention c'est ici qu'on dit la version de l'EPUB, bien indiquer la langue aussi. Pour la partie sur l'<a href="http://idpf.org/epub/30/spec/epub30-publications.html#sec-opf-metadata-identifiers-pid">unique-identifier</a> j'ai encore des soucis pour comprendre comment on le crée. Les <code>xmlns="…"</code> sont très importants, ils permettent de dire quel « dictionnaire » de termes on utilise. C’est utile pour indiquer les différentes sections de l’EPUB.</p>
-      <h5>metadata</h5>
+      <h6>metadata</h6>
 <pre>&lt;metadata&gt;
   &lt;dc:identifier id="pub-identifier"&gt;urn:isbn:numéro_isbn&lt;/dc:identifier&gt;
   &lt;dc:title id="pub-title"&gt;titre&lt;/dc:title&gt;
@@ -67,20 +69,20 @@
   &lt;dc:rights&gt;la licence&lt;/dc:rights&gt;
 &lt;/metadata&gt;</pre>
       <p>Il peut y avoir moins de <code>metadata</code> ou plus, les specs sont assez claires (pour une fois). Pour le <code>modified</code> c’est la date et l’heure sous la forme <code>yyyy-mm-jjThh:mm:ssZ</code></p>
-      <h4>fichier toc.ncx</h4>
-      <h4>au moins un fichier .html ou .xhtml</h4>
+      <h5>fichier toc.ncx</h5>
+      <h5>au moins un fichier .html ou .xhtml</h5>
       <p>Exemple de note de bas de page<a epub:type="noteref" href="#note_ch2-1" id="ref_ch2-1"> [1]</a></p>
     </section>
 
     <section id="addenda-au-chapitre-2" epub:type="bodymatter afterword">
-      <h2><a href="#TOC">Addenda au chapitre 2 <span class="titre">Modèle d'addenda cher à Pouhiou</span></a></h2>
+      <h3><a href="#TOC">Addenda au chapitre 2 <span class="titre">Modèle d'addenda cher à Pouhiou</span></a></h3>
       <div class="addendum">
         <p>Contenu de l'addendum.</p>
       </div>
     </section>
 
     <aside class="epub-footnotes" epub:type="footnotes">
-      <ol class="references" epub:type="footnote">
+      <ol epub:type="footnote">
         <li><a epub:type="footnote" href="#ref_ch2-1" id="note_ch2-1">1.</a> Contenu de la note de bas de page. Pour indiquer la référence bien mettre une espace insécable avant les crochets entourant le numéro de la référence. Ça permet d'avoir une zone plus grande pour sélectionner le lien notamment sur liseuse où la sélection se fait avec un doigt. </li>
       </ol>
     </aside>

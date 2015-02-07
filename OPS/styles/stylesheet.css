@@ -1,12 +1,52 @@
 /**
- * Ce fichier n’est destiné qu’à assurer la compatibilité ascendante.
+ * Ce fichier assure la compatibilité ascendante
+ * avec les framabooks déjà publiés.
  */
 
-@import url(epub-cover.css);
-@import url(epub-frontmatter.css);
-@import url(epub-bodymatter.css);
-@import url(epub-backmatter.css);
-
+@import url(framabook.css);
 @import url(captain-obvious.css);
 @import url(sms.css);
+
+/* spécifique « Libres Conseils » */
+blockquote, .citation {
+  padding: 1em 2em;
+}
+.intro {
+  font-style: italic;
+  padding-left: 2.2em;
+  padding-bottom: 1.5em;
+}
+
+/* spécifique « Option Libre » (table_compatibilité.xhtml) */
+.entete {
+  border: 0;
+  background-color: #fff;
+}
+.entete-ligne {
+  width: 3em;
+  padding: 0.5em;
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+/* spécifique « Histoires et Cultures du Libre » */
+.logos {
+  margin: 5em auto;
+}
+.logos img {
+  vertical-align: middle;
+}
+.figure {
+  border: 0.5em solid #ddd;
+  font-size: 0.8em;
+  margin: 1em;
+  padding: 0 3em;
+  text-indent: 0;
+}
+.cadre_gris {
+  background-color: #ddd;
+  margin: 1em auto;
+  padding: 0.5em 1em;
+  text-indent: 0;
+}
 
