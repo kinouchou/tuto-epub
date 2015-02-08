@@ -23,6 +23,12 @@
 /* Aide à la relecture -- désactiver cette ligne avant publication de l’EPUB */
 @import url(relecture.css);
 
+/* largeur optimisée pour le confort de lecture */
+body {
+  max-width: 48em;
+  margin: 0 auto;
+}
+
 
 /*******************************************************************************
  * Titres
